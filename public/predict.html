@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Light Side</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <!-- <script type="text/javascript" src ="convertor.js"></script> -->
+    <script type="text/javascript" src="app.module.js"></script>
+    <script type="text/javascript" src="controllers.js"></script>
+    <!--<script type="text/javascript" src="directives.js"></script>-->
+    <!--<script type="text/javascript" src="services.js"></script>-->
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.4.0/papaparse.min.js"></script>
+
+</head>
+<body>
+<div >
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" >Text Mining Tool</a>
+            </div>
+
+            <button class="btn btn-danger navbar-btn" onclick="checkCsv()">Predict Csv</button>
+            <button class="btn btn-danger navbar-btn" onclick="checkText()">Predict Text</button>
+            <!--<ul class="nav navbar-nav" >
+
+                <li><a href="#" ;return false;">Predict Csv</a></li>
+                <li><a href="#" ;return false;">Predict Text</a> </li>
+            </ul>-->
+        </div>
+    </nav>
+
+    <div class="container">
+
+            <table  border="1" >
+                <tr>
+
+                    <th>Label Predicted</th>
+
+                </tr>
+                <tr ng-repeat="note in tableData">
+
+                    <td>{{note.predection}}</td>
+
+
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+</div>
+
+<script type="text/javascript">
+    function myFunction() {
+        var x = document.getElementById("extract");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+
+    }
+
+    function checkCsv() {
+        // var x = document.getElementById("csv1");
+        // var y = document.getElementById("text1");
+        // var z = document.getElementById("csv1table");
+        //
+        // x.style.display ="block";
+        // y.style.display ="none";
+        // z.style.display = "none";
+
+        window.location.href = "index.html"
+
+    }
+
+    function checkText() {
+        // var x = document.getElementById("csv1");
+        // var y = document.getElementById("text1");
+        // var z = document.getElementById("csv1table");
+        //
+        // y.style.display ="block";
+        // x.style.display ="none";
+        // z.style.display = "none";
+        window.location.href = "index.html"
+
+    }
+</script>
+
+
+
+</body>
+</html>

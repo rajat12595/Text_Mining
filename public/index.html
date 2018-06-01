@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Light Side</title>
+
+    <!--Importing All Scripts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script type="text/javascript" src="app.module.js"></script>
+    <script type="text/javascript" src="controllers.js"></script>
+
+    <!--Importing css-->
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.bootstrap.min.css">
+
+    <!--Importing in Built library-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.4.0/papaparse.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
+    <script src=" https://cdn.datatables.net/responsive/2.2.1/js/responsive.bootstrap.min.js"></script>
+
+</head>
+<body>
+<div>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">Text Mining Tool</a>
+            </div>
+
+            <button class="btn btn-danger navbar-btn" onclick="checkCsv()">Predict Csv</button>
+            <button class="btn btn-danger navbar-btn" onclick="checkText()">Predict Text</button>
+            <!--<ul class="nav navbar-nav" >
+
+                <li><a href="#" ;return false;">Predict Csv</a></li>
+                <li><a href="#" ;return false;">Predict Text</a> </li>
+            </ul>-->
+        </div>
+    </nav>
+</div>
+    <div class="container">
+
+        <div ng-controller="FileUploadController" ng-hide="myValue" id="extract">
+
+            <div id="text1" style="display: none">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="myFileField2">Enter Text for predection: </label>
+                                <input type="text" ng-model="myFileText" class="form-control" id="myFileField2"/>
+                            </div>
+                            <button ng-click="uploadFileText()" class="btn btn-primary">Predict</button>
+                        </form>
+                    </div>
+                    <div>
+                        <h1 class="lead" align="center">
+                            {{result}}
+                        </h1>
+                    </div>
+                </div>
+            </div>
+
+            <div id="csv1" style="display: none">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="myFileField">Select a file: </label>
+                                <input ng-model="myFile" type="file" id="file" name="file"/>
+
+                            </div>
+
+                            <br>
+                            <div class="form-group">
+                                <label for="myFileField2">Enter column: </label>
+                                <input type="text" ng-model="myFileText" class="form-control" id="myFileField3"/>
+                            </div>
+                            <button ng-click="uploadFile()" class="btn btn-primary">Predict</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="csv1table" ng-show="tableData">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th class="text-capitalize">{{myFileText}}</th>
+                        <th>Label Predicted</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="note in tableData">
+                        <td>{{note.text}}</td>
+                        <td>{{note.predection}}</td>
+                    </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+
+
+
+    function myFunction() {
+        var x = document.getElementById("extract");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+    function checkCsv() {
+        var x = document.getElementById("csv1");
+        var y = document.getElementById("text1");
+
+
+        x.style.display = "block";
+        y.style.display = "none";
+        //z.style.display = "none";
+
+    }
+
+    function checkText() {
+        var x = document.getElementById("csv1");
+        var y = document.getElementById("text1");
+        //var z = document.getElementById("csv1table");
+
+        y.style.display = "block";
+        x.style.display = "none";
+        //z.style.display = "none";
+
+    }
+</script>
+</body>
+</html>
